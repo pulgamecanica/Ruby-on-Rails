@@ -1,0 +1,17 @@
+<h1>Abuelita Sordita</h1>
+
+<%=render 'abuelita'%>
+
+<p>Dile algo a tu abuelita:</p>
+<br>
+<%= form_tag ("/abuelita"), method: "post" do %>
+
+    <%= label_tag(:new_word, "Say something:")  %>
+    <%= text_field_tag (:new_word) %>
+  <%= submit_tag ("Submit") %>
+
+<% end %>
+<br>
+<br>
+<br>
+<%= link_to 'Back', controller: 'index' %>
