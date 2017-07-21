@@ -1,0 +1,28 @@
+<h1>BITLY</h1>
+
+<%= render "shared/error_messages" %>
+
+<%= form_for :url, url: { controller: :urls, action: :create } do |f| %>
+  <%= f.text_field :long_url %>
+  <%= f.submit "Convertir" %>
+<% end %>
+
+<h2>Lista de urls</h2>
+<% if @urls.any? %>
+  <table>
+    <tr>
+      <th>URL</th>
+      <th>Bitly</th>
+      <th>Visits</th>
+    </tr>
+  <% @urls.each do |url| %>
+    <tr>
+      <td><%= url.long_url %></td>
+      <td><%= link_to "bit.ly/#{url.short_url}", real_url_path(url.short_url) %></td>
+      <td>...<%=url.click_count %></td>
+    </tr>
+  <% end %>
+</table>
+<% else %>
+  <h3>No tienes urls</h3>
+<% end %>

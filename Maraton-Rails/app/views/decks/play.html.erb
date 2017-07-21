@@ -1,0 +1,31 @@
+<div class="the_class">
+  <h1>This is the <%=Deck.find(@deck_id).name%> Deck</h1>
+  <h4>Instructions:</h4>
+  <p>1.- Read all the questions</p>
+  <p>2.- Solve all the questions</p>
+  <p>3.- Send the questionnaire</p>
+  <br>
+  <br>
+  <br>
+  <% @deck = Deck.find(@deck_id)%>
+  <% counter = Deck.find(@deck_id).questions%>
+    <%= form_tag("/answers") do %>
+     <% counter.each_with_index do |question, index| %>
+      <p><%= index+1 %>  <%= question.question %> </p> 
+      <% question.answers.each do |option| %>
+       <p> <%= option.name %></p>
+      <% end %> 
+      <%= label_tag(:option, "Write the answer:") %>
+      <%index += 1 %>
+      <%= hidden_field_tag(:game_id, @game.id) %>
+      <%= text_field_tag(index) %>
+      <% end %>  
+     <br>
+     <br>
+     <%= submit_tag("Search") %>
+    <% end %>   
+  <br>
+</div>
+
+
+

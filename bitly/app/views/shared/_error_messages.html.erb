@@ -1,0 +1,10 @@
+<% if @url %>
+  <% if @url.errors.any? %>
+    <h1><%= @message %></h1>
+    <ul>
+      <% @url.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

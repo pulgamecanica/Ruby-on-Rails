@@ -1,0 +1,44 @@
+<h1>Welcome to MaratonWeb</h1 >
+    <p><center>
+      <div align="right"> Date:<%=Time.now%></div>
+      <!--mostrar sesion con tiempo actual-->
+    </center></p>
+    <!-- mostrar nombre -->
+    <!-- mostrar id -->
+    <p><%= @user.name %></p>
+
+    <p>Now you can play maraton!!!</p>
+<h2>You can play with three diferent decks !!!</h2>
+<p>Choose your deck</p>
+<p><%=link_to Deck.find(1).name, search_path(Deck.find(1), @user)%>
+<p><%=link_to Deck.find(2).name, search_path(Deck.find(2))%>
+<p><%=link_to Deck.find(3).name, search_path(Deck.find(3))%>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h3>Stats:</h3>
+<br>
+<br>
+<p><%@user.games.each_with_index do |x, index|%>
+   Game: <%= index %>  Deck: <%=x.deck.name %>  
+
+  <% counter = x.stats.count %>
+  <% counter.times do |y|%>
+    <% if x.stats[y].correct == 1 %>
+     <p>Answer.-<%= y+1%>   good</p>
+    <% else %>
+     <p>Answer.-<%= y+1%>  wrong!!</p>
+    <%end%>
+  <%end%>
+<%end%>
+
+
+<p>
+  <%= link_to 'Back', root_path %>
+</p>
+
+

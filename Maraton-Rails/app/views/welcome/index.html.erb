@@ -1,0 +1,18 @@
+<p>Login or register</p>
+Log_in
+<%= form_for @user, :url => { :action => "show" } do |f| %>
+  Email: <%= f.text_field :email %><br>
+  Password: <%= f.text_field :password %><br>
+  <%= f.submit "Sing In" %>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+Sign_up
+<%= form_for @user  do |f| %>
+  Name: <%= f.text_field :name %><br>
+  Email: <%= f.text_field :email %><br>
+  Password: <%= f.text_field :password %><br>
+  <%= f.submit "Create" %>
+<% end %>
